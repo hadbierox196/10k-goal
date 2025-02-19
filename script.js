@@ -96,7 +96,7 @@ document.getElementById('start-btn').addEventListener('click', () => {
   totalScore = 0; // Reset score
   shufflePlayers(); // Shuffle players to randomize the order
   currentPlayerIndex = 0; // Reset player index
-  document.getElementById('score').innerText = `Current Score: ${totalScore}`;
+  document.getElementById('score').innerText = `Goal: ${totalScore}`;
   displayPlayer();
 });
 
