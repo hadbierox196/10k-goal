@@ -79,17 +79,26 @@ const sectionMultipliers = {
   xfive: 5
 };
 
-// Variable to track total score
+// Variable to track total score and the number of players played
 let totalScore = 0;
 let currentPlayerIndex = 0;
-let filledBoxes = 0; // Track the number of filled boxes
+let playersPlayed = 0; // Counter to track how many players have been played
+
+// Shuffle the players array to randomize the order
+function shufflePlayers() {
+  for (let i = players.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [players[i], players[j]] = [players[j], players[i]];
+  }
+}
 
 // Start the game
 document.getElementById('start-btn').addEventListener('click', () => {
   totalScore = 0; // Reset score
+  playersPlayed = 0; // Reset players counter
+  shufflePlayers(); // Shuffle players to randomize the order
   currentPlayerIndex = 0; // Reset player index
-  filledBoxes = 0; // Reset filled boxes counter
-  document.getElementById('score').innerText = `Current Goal: ${totalScore}`;
+  document.getElementById('score').innerText = `Current Score: ${totalScore}`;
   displayPlayer();
 });
 
@@ -97,7 +106,7 @@ document.getElementById('start-btn').addEventListener('click', () => {
 function displayPlayer() {
   const playerDisplay = document.getElementById('player-display');
   playerDisplay.innerHTML = ''; // Clear previous player
-  if (currentPlayerIndex < players.length) {
+  if (currentPlayerIndex < players.length && playersPlayed < 10) {
     const player = players[currentPlayerIndex];
     const playerDiv = document.createElement('div');
     playerDiv.classList.add('player');
@@ -136,20 +145,17 @@ function handleClick(e) {
 
   // Display the player's name and score in the clicked section
   section.innerHTML = `<p>${player.name} - Goal: ${score}</p>`;
-  document.getElementById('score').innerText = `Current Goal: ${totalScore}`;
-
-  // Increment the filled boxes counter
-  filledBoxes++;
-
-  // Stop the game if all boxes are filled
-  if (filledBoxes === document.querySelectorAll('.section').length) {
-    alert('All boxes are filled! Game Over!');
-    return;
-  }
+  document.getElementById('score').innerText = `Current Score: ${totalScore}`;
 
   // Move to the next player
   currentPlayerIndex++;
+  playersPlayed++; // Increment players counter
   displayPlayer();
+
+  // Stop the game if 10 players have been played
+  if (playersPlayed >= 10) {
+    alert("Game Over! You've played 10 players!");
+  }
 }
 
 // Add event listeners to all sections
