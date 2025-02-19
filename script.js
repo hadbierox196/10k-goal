@@ -82,21 +82,14 @@ const sectionMultipliers = {
 // Variable to track total score
 let totalScore = 0;
 let currentPlayerIndex = 0;
-
-// Shuffle the players array to randomize the order
-function shufflePlayers() {
-  for (let i = players.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [players[i], players[j]] = [players[j], players[i]];
-  }
-}
+let filledBoxes = 0; // Track the number of filled boxes
 
 // Start the game
 document.getElementById('start-btn').addEventListener('click', () => {
   totalScore = 0; // Reset score
-  shufflePlayers(); // Shuffle players to randomize the order
   currentPlayerIndex = 0; // Reset player index
-  document.getElementById('score').innerText = `Goal: ${totalScore}`;
+  filledBoxes = 0; // Reset filled boxes counter
+  document.getElementById('score').innerText = `Current Goal: ${totalScore}`;
   displayPlayer();
 });
 
@@ -104,7 +97,7 @@ document.getElementById('start-btn').addEventListener('click', () => {
 function displayPlayer() {
   const playerDisplay = document.getElementById('player-display');
   playerDisplay.innerHTML = ''; // Clear previous player
-  if (currentPlayerIndex < players.length && totalScore < 10000) {
+  if (currentPlayerIndex < players.length) {
     const player = players[currentPlayerIndex];
     const playerDiv = document.createElement('div');
     playerDiv.classList.add('player');
@@ -143,16 +136,20 @@ function handleClick(e) {
 
   // Display the player's name and score in the clicked section
   section.innerHTML = `<p>${player.name} - Goal: ${score}</p>`;
-  document.getElementById('score').innerText = `Goal: ${totalScore}`;
+  document.getElementById('score').innerText = `Current Goal: ${totalScore}`;
+
+  // Increment the filled boxes counter
+  filledBoxes++;
+
+  // Stop the game if all boxes are filled
+  if (filledBoxes === document.querySelectorAll('.section').length) {
+    alert('All boxes are filled! Game Over!');
+    return;
+  }
 
   // Move to the next player
   currentPlayerIndex++;
   displayPlayer();
-
-  // Stop the game if total score reaches 10,000
-  if (totalScore >= 10000) {
-    alert("Game Over! You've reached 10,000 goals!");
-  }
 }
 
 // Add event listeners to all sections
