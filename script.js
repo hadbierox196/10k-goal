@@ -143,7 +143,7 @@ function handleClick(e) {
 
   // Display the player's name and score in the clicked section
   section.innerHTML = `<p>${player.name} - Goal: ${score}</p>`;
-  document.getElementById('score').innerText = `Current Score: ${totalScore}`;
+  document.getElementById('score').innerText = `Goal: ${totalScore}`;
 
   // Move to the next player
   currentPlayerIndex++;
