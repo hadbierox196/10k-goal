@@ -1,7 +1,25 @@
 // Sample player list (values are placeholders)
 const players = [
   { name: 'Cristiano Ronaldo', value: 924 },
-  { name: 'Lionel Messi', value: 850 },
+  
+  { "name": "Lionel Messi", "value": 850 },
+  { "name": "Pelé", "value": 762 },
+  { "name": "Romário", "value": 756 },
+  { "name": "Ferenc Puskás", "value": 725 },
+  { "name": "Josef Bican", "value": 722 },
+  { "name": "Jimmy Jones", "value": 639 },
+  { "name": "Gerd Müller", "value": 634 },
+  { "name": "Joe Bambrick", "value": 626 },
+  { "name": "Abe Lenstra", "value": 624 },
+  { "name": "Eusébio", "value": 578 },
+  { "name": "Fernando Peyroteo", "value": 544 },
+  { "name": "Zlatan Ibrahimović", "value": 561 },
+  { "name": "Luis Suárez", "value": 557 }
+  { "name": "Imre Schlosser", "value": 611 },
+  { "name": "Jimmy McGrory", "value": 550 },
+  { "name": "Uwe Seeler", "value": 545 },
+  { "name": "Alfredo Di Stéfano", "value": 530 },
+  { "name": "Gyula Zsengellér", "value": 522 }, 
   { name: 'Robert Lewandowski', value: 710 },
   { name: 'Ronald Koeman', value: 253 },
   { name: 'Juninho Pernambucano', value: 77 },
