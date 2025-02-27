@@ -1,7 +1,6 @@
 // Sample player list (values are placeholders)
 const players = [
   { name: 'Cristiano Ronaldo', value: 924 },
-  
   { "name": "Lionel Messi", "value": 850 },
   { "name": "Pelé", "value": 762 },
   { "name": "Romário", "value": 756 },
@@ -85,7 +84,7 @@ const players = [
   { name: 'Marcelo Brozović', value: 52 },
   { name: 'Jack Wilshere', value: 31 },
   { name: 'Andrés Iniesta', value: 58 },
-  { name: 'Juan Mata', value: 52 }
+  { name: 'Juan Mata', value: 52 },
 ];
 
 // Section multipliers
